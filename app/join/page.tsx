@@ -20,7 +20,7 @@ export default function JoinPage() {
         <section className="relative mx-auto max-w-[1040px] pt-8 min-h-[calc(100vh-60px)]">
           <div>
             <h3 className="text-2xl md:text-4xl font-serif font-semibold leading-[1.04] tracking-[-0.01em]">
-              join us to build the future
+              Join us to build the future
             </h3>
             <p className="mt-4 text-zinc-300">Say hello, propose a project, or just lurk and learn.</p>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
