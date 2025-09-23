@@ -105,7 +105,7 @@ export function Navbar() {
           </div>
 
           {/* Content */}
-          <div className="overflow-y-auto">
+          <div className="overflow-hidden">
             <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-10 md:py-14">
               <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
                 {/* Left column: big nav with rhythm */}

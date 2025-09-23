@@ -19,7 +19,18 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={`dark ${inter.className}`}>
-      <body className="bg-black text-white antialiased">{children}</body>
+      <body className="bg-black text-white antialiased">
+        <div className="flex min-h-screen flex-col">
+          <main className="flex-1">{children}</main>
+          <footer className="border-t border-white/10">
+            <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-6">
+              <p className="text-center text-[11px] uppercase tracking-[0.18em] text-zinc-500">
+                © {new Date().getFullYear()} ERSA STUDIOS
+              </p>
+            </div>
+          </footer>
+        </div>
+      </body>
     </html>
   );
 }
