@@ -113,9 +113,9 @@ export function Navbar() {
                   {[
                     ["HOME", "/"],
                     ["JOIN", "/join"],
-                    ["PROJECTS", "/projects"],
+                    // ["PROJECTS", "/projects"],
                     ["ABOUT", "/about"],
-                    ["BLOG", "/blog"],
+                    // ["BLOG", "/blog"],
                   ].map(([label, href]) => (
                     <Link
                       key={label}
