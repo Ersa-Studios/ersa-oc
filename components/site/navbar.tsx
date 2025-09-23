@@ -152,7 +152,7 @@ export function Navbar() {
                       <span className="text-sm tracking-[0.08em]">Discord</span>
                     </a>
                     <a
-                      href="https://t.me/your-group"
+                      href="https://t.me/ersaopencollective"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex h-20 items-center justify-center gap-2 border border-[#229ED9]/40 bg-[#229ED9]/18 text-white hover:bg-[#229ED9]/28 transition-colors"
