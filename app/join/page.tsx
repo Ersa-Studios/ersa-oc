@@ -1,13 +1,11 @@
 // app/page.tsx
-import type { JSX } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/site/navbar";
 import { Button } from "@/components/ui/button";
+import { MessageCircle, Send, Mail } from "lucide-react";
 
 // Optional: declare local SVG icon props once to avoid repeating generics
-type IconProps = JSX.IntrinsicElements["svg"];
-
-export default function HomePage(): JSX.Element {
+export default function JoinPage() {
   return (
     <>
       <Navbar />
@@ -19,33 +17,35 @@ export default function HomePage(): JSX.Element {
         </div>
 
         {/* centered hero */}
-        <section className="relative z-10 mx-auto max-w-[960px] px-6 min-h-[calc(100vh-56px)] grid place-items-center text-center">
+        <section className="relative mx-auto max-w-[1040px] pt-8 min-h-[calc(100vh-60px)]">
           <div>
-            <div className="mb-6 text-[11px] uppercase tracking-[0.18em] text-zinc-400">
-              ERSA OPEN COLLECTIVE
-            </div>
-            <h1 className="text-5xl md:text-7xl font-serif font-semibold leading-[1.04] tracking-[-0.01em]">
-              crafted for the common good
-            </h1>
-            <p className="mt-6 text-zinc-300 text-base md:text-lg leading-relaxed">
-              A collective of builders advancing open hardware and software to
-              reduce dependence on big corporations.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-3">
-              <Button
-                asChild
-                size="lg"
-                className="bg-white text-black hover:bg-zinc-200"
+            <h3 className="text-2xl md:text-4xl font-serif font-semibold leading-[1.04] tracking-[-0.01em]">
+              join us to build the future
+            </h3>
+            <p className="mt-4 text-zinc-300">Say hello, propose a project, or just lurk and learn.</p>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Link
+                href="https://discord.gg/your-invite"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 border border-[#5865F2]/40 bg-[#5865F2]/18 text-white hover:bg-[#5865F2]/28 transition-colors px-4 py-3"
               >
-                <Link href="/join">Join Open Collective</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="border-white/15 text-white hover:bg-white/10"
+                <MessageCircle className="size-4" /> Discord
+              </Link>
+              <Link
+                href="https://t.me/your-group"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 border border-[#229ED9]/40 bg-[#229ED9]/18 text-white hover:bg-[#229ED9]/28 transition-colors px-4 py-3"
               >
-                <Link href="/about">Learn more</Link>
-              </Button>
+                <Send className="size-4" /> Telegram
+              </Link>
+              <Link
+                href="mailto:oc@ersa.dev"
+                className="flex items-center gap-2 border border-white/12 bg-white/[0.06] text-white hover:bg-white/[0.10] transition-colors px-4 py-3"
+              >
+                <Mail className="size-4" /> oc@ersa.dev
+              </Link>
             </div>
           </div>
         </section>

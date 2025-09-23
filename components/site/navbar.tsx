@@ -2,9 +2,11 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import type { SVGProps } from "react";
 import { Button } from "@/components/ui/button";
+import { MessageCircle, Send, Mail } from "lucide-react";
 
-function IconMenu(props: React.SVGProps<SVGSVGElement>) {
+function IconMenu(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -18,7 +20,7 @@ function IconMenu(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-function IconClose(props: React.SVGProps<SVGSVGElement>) {
+function IconClose(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -58,14 +60,12 @@ export function Navbar() {
             {" "}
             {/* unified */}
             <div className="flex">
-              <a
+              <Link
                 href="/"
                 className="text-[11px] uppercase tracking-[0.22em] text-zinc-300"
               >
-                {" "}
-                {/* see 3) */}
                 ERSA OPEN COLLECTIVE
-              </a>
+              </Link>
             </div>
             <div className="flex items-center justify-end">
               <Button
@@ -100,15 +100,7 @@ export function Navbar() {
               aria-label="Close menu"
               className="h-9 w-9 grid place-items-center text-zinc-300 hover:bg-white/10"
             >
-              <svg
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
-                fill="currentColor"
-                aria-hidden
-              >
-                <path d="M6.4 5l12.7 12.7-1.4 1.4L5 6.4 6.4 5Zm12.7 1.4L6.4 19.1 5 17.7 17.7 5l1.4 1.4Z" />
-              </svg>
+              <IconClose />
             </button>
           </div>
 
@@ -125,13 +117,14 @@ export function Navbar() {
                     ["ABOUT", "/about"],
                     ["BLOG", "/blog"],
                   ].map(([label, href]) => (
-                    <a
+                    <Link
                       key={label}
                       href={href}
                       className="group block tracking-[0.25em] text-[28px] md:text-[32px] lg:text-[34px] leading-[1.12] tracking-[0.01em] text-white"
+                      ref={label === "HOME" ? firstLinkRef : undefined}
                     >
                       <span className="group-hover:opacity-90">{label}</span>
-                    </a>
+                    </Link>
                   ))}
                 </nav>
 
@@ -152,27 +145,28 @@ export function Navbar() {
                       href="https://discord.gg/your-invite"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-20 items-center justify-center border border-[#5865F2]/40 bg-[#5865F2]/18 text-white hover:bg-[#5865F2]/28 transition-colors"
+                      className="flex h-20 items-center justify-center gap-2 border border-[#5865F2]/40 bg-[#5865F2]/18 text-white hover:bg-[#5865F2]/28 transition-colors"
                       aria-label="Discord"
                     >
+                      <MessageCircle className="size-4" />
                       <span className="text-sm tracking-[0.08em]">Discord</span>
                     </a>
                     <a
                       href="https://t.me/your-group"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-20 items-center justify-center border border-[#229ED9]/40 bg-[#229ED9]/18 text-white hover:bg-[#229ED9]/28 transition-colors"
+                      className="flex h-20 items-center justify-center gap-2 border border-[#229ED9]/40 bg-[#229ED9]/18 text-white hover:bg-[#229ED9]/28 transition-colors"
                       aria-label="Telegram"
                     >
-                      <span className="text-sm tracking-[0.08em]">
-                        Telegram
-                      </span>
+                      <Send className="size-4" />
+                      <span className="text-sm tracking-[0.08em]">Telegram</span>
                     </a>
                     <a
                       href="mailto:oc@ersa.dev"
-                      className="flex h-20 items-center justify-center border border-white/12 bg-white/[0.06] text-white hover:bg-white/[0.10] transition-colors"
+                      className="flex h-20 items-center justify-center gap-2 border border-white/12 bg-white/[0.06] text-white hover:bg-white/[0.10] transition-colors"
                       aria-label="Email oc@ersa.dev"
                     >
+                      <Mail className="size-4" />
                       <span className="text-sm tracking-[0.08em]">Email</span>
                     </a>
                   </div>
@@ -181,15 +175,15 @@ export function Navbar() {
                     <div className="grid grid-cols-1 gap-4 text-sm">
                       <a
                         href="/careers"
-                        className="text-zinc-400 hover:text-zinc-200 tracking-[0.06em]"
+                        className="text-[11px] text-zinc-400 hover:text-zinc-200 tracking-[0.06em]"
                       >
-                        Work with Ersa
+                        WORK WITH ERSA
                       </a>
                       <a
                         href="https://ersa.dev"
-                        className="text-zinc-400 hover:text-zinc-200 tracking-[0.06em]"
+                        className="text-[11px] text-zinc-400 hover:text-zinc-200 tracking-[0.06em]"
                       >
-                        Built with ❤️ by Ersa Studios
+                        BUILT WITH ❤️ BY ERSA STUDIOS
                       </a>
                     </div>
                   </div>
