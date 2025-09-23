@@ -25,7 +25,7 @@ export default function JoinPage() {
             <p className="mt-4 text-zinc-300">Say hello, propose a project, or just lurk and learn.</p>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
               <Link
-                href="https://discord.gg/your-invite"
+                href="https://discord.gg/mKkBuAdQ"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 border border-[#5865F2]/40 bg-[#5865F2]/18 text-white hover:bg-[#5865F2]/28 transition-colors px-4 py-3"

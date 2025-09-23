@@ -142,7 +142,7 @@ export function Navbar() {
 
                   <div className="grid grid-cols-3 gap-4">
                     <a
-                      href="https://discord.gg/your-invite"
+                      href="https://discord.gg/mKkBuAdQ"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex h-20 items-center justify-center gap-2 border border-[#5865F2]/40 bg-[#5865F2]/18 text-white hover:bg-[#5865F2]/28 transition-colors"
