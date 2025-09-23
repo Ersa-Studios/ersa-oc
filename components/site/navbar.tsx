@@ -56,10 +56,8 @@ export function Navbar() {
     <>
       <header className="sticky top-0 z-40 bg-black/80 backdrop-blur-md">
         <div className="mx-auto max-w-6xl">
-          <div className="flex items-center justify-between border-b border-white/10 px-6 md:px-10 lg:px-14 py-4">
-            {" "}
-            {/* unified */}
-            <div className="flex">
+          <div className="grid grid-cols-3 items-center border-b border-white/10 px-6 md:px-10 lg:px-14 py-4">
+            <div className="justify-self-start">
               <Link
                 href="/"
                 className="text-[11px] uppercase tracking-[0.22em] text-zinc-300"
@@ -67,7 +65,10 @@ export function Navbar() {
                 ERSA OPEN COLLECTIVE
               </Link>
             </div>
-            <div className="flex items-center justify-end">
+            <div className="justify-self-center">
+              <img src="/ersa.svg" alt="ERSA" className="h-6 md:h-7 w-auto opacity-90" />
+            </div>
+            <div className="justify-self-end">
               <Button
                 variant="ghost"
                 size="icon"
