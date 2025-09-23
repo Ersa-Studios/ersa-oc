@@ -16,7 +16,7 @@ export default function AboutPage() {
               <div className="mt-6 prose prose-invert prose-zinc max-w-none">
                 <p>
                   We draw inspiration from outfits like <strong>Absurd Industries</strong>
-                  — small, focused, and relentlessly hands‑on. We believe cities like
+                   — focused, and relentlessly hands‑on. We believe cities like
                   <strong> New Delhi</strong> can become hubs for open hardware and
                   software if we lower the cost of experimentation, share designs freely,
                   and build local supply chains.
