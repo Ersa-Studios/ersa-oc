@@ -123,7 +123,7 @@ export function Navbar() {
                       className="group block tracking-[0.25em] text-[28px] md:text-[32px] lg:text-[34px] leading-[1.12] tracking-[0.01em] text-white"
                       ref={label === "HOME" ? firstLinkRef : undefined}
                     >
-                      <span className="group-hover:opacity-90">{label}</span>
+                      <span className="group-hover:opacity-90 bg-clip-text bg-gradient-to-r from-zinc-200 via-white to-zinc-300 group-hover:text-transparent">{label}</span>
                     </Link>
                   ))}
                 </nav>
