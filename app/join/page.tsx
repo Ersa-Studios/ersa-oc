@@ -17,7 +17,7 @@ export default function JoinPage() {
         </div>
 
         {/* centered hero */}
-        <section className="relative mx-auto max-w-[1040px] pt-8 min-h-[calc(100vh-60px)]">
+        <section className="relative z-10 mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-14">
           <div>
             <h3 className="text-2xl md:text-4xl font-serif font-semibold leading-[1.04] tracking-[-0.01em]">
               Join us to build the future
