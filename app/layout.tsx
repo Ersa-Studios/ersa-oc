@@ -25,7 +25,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <footer className="border-t border-white/10">
             <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-6">
               <p className="text-center text-[11px] uppercase tracking-[0.18em] text-zinc-500">
-                © {new Date().getFullYear()} ERSA STUDIOS
+                © {new Date().getFullYear()} ERSA STUDIOS. NEW DELHI, INDIA
               </p>
             </div>
           </footer>
