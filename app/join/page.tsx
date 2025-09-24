@@ -33,7 +33,7 @@ export default function JoinPage() {
                 <MessageCircle className="size-4" /> Discord
               </Link>
               <Link
-                href="@ersaopencollective"
+                href="https://t.me/ersaopencollective"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 border border-[#229ED9]/40 bg-[#229ED9]/18 text-white hover:bg-[#229ED9]/28 transition-colors px-4 py-3"
