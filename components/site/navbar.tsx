@@ -66,7 +66,7 @@ export function Navbar() {
               </Link>
             </div>
             <div className="justify-self-center">
-              <img src="/ersa.svg" alt="ERSA" className="h-6 md:h-7 w-auto opacity-90" />
+              <img src="/ersa.svg" alt="ERSA" className="h-9 md:h-10 w-auto opacity-90" />
             </div>
             <div className="justify-self-end">
               <Button
