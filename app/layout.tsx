@@ -19,13 +19,16 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={`dark ${inter.className}`}>
-      <body className="bg-black text-white antialiased">
+      <body className="text-white antialiased" style={{ backgroundColor: "#0f0f1a" }}>
         <div className="flex min-h-screen flex-col">
           <main className="flex-1">{children}</main>
-          <footer className="border-t border-white/10">
-            <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-6">
-              <p className="text-center text-[11px] uppercase tracking-[0.18em] text-zinc-500">
-                © {new Date().getFullYear()} ERSA STUDIOS. NEW DELHI, INDIA
+          <footer className="border-t border-white/[0.06]">
+            <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-7 flex flex-col sm:flex-row items-center justify-between gap-2">
+              <p className="text-[11px] tracking-[0.14em] text-white/25 uppercase">
+                © {new Date().getFullYear()} Ersa Studios
+              </p>
+              <p className="text-[11px] text-white/20">
+                New Delhi, India — building in the open
               </p>
             </div>
           </footer>
