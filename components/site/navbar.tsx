@@ -14,9 +14,16 @@ const NAV_LINKS = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => { setOpen(false); }, [pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <nav
@@ -24,7 +31,17 @@ export function Navbar() {
       style={{ maxWidth: "1080px" }}
     >
       {/* ── Main pill: 3-column grid ── */}
-      <div className="glass rounded-full px-5 py-3 grid items-center" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
+      <div
+        className="glass rounded-full px-5 py-3 grid items-center"
+        style={{
+          gridTemplateColumns: "1fr auto 1fr",
+          transition: "box-shadow 0.4s ease, background 0.4s ease",
+          ...(scrolled ? {
+            background: "rgba(14, 14, 22, 0.86)",
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 0 16px 60px rgba(0,0,0,0.65), 0 1px 0 rgba(0,0,0,0.5)",
+          } : {}),
+        }}
+      >
 
         {/* LEFT — wordmark */}
         <div className="justify-self-start flex items-center">

@@ -1,6 +1,7 @@
 // app/about/page.tsx
 import { Navbar } from "@/components/site/navbar";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/site/scroll-reveal";
 
 export default function AboutPage() {
   return (
@@ -28,7 +29,11 @@ export default function AboutPage() {
         >
           <p
             className="text-[11px] uppercase tracking-[0.2em] mb-5"
-            style={{ color: "rgba(180,178,200,0.36)" }}
+            style={{
+              color: "rgba(180,178,200,0.36)",
+              animation: "fade-in 0.6s ease both",
+              animationDelay: "80ms",
+            }}
           >
             About the collective
           </p>
@@ -41,6 +46,8 @@ export default function AboutPage() {
               maxWidth: "22ch",
               textWrap: "balance",
               color: "#fff",
+              animation: "hero-line 0.75s cubic-bezier(0.22,1,0.36,1) both",
+              animationDelay: "160ms",
             }}
           >
             Building public tools for Delhi&apos;s makers
@@ -48,6 +55,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── Main content ── */}
+        <ScrollReveal delay={60}>
         <section
           className="relative z-10 mx-auto max-w-6xl px-6 md:px-12 lg:px-20"
           style={{ paddingBottom: "5rem" }}
@@ -85,7 +93,7 @@ export default function AboutPage() {
 
               {/* Two-col detail cards */}
               <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="glass-card rounded-xl p-5">
+                <div className="glass-card glass-card-hover rounded-xl p-5">
                   <h3
                     className="text-[11px] uppercase tracking-[0.16em] mb-3"
                     style={{ color: "rgba(180,178,200,0.45)" }}
@@ -102,7 +110,7 @@ export default function AboutPage() {
                   </ul>
                 </div>
 
-                <div className="glass-card rounded-xl p-5">
+                <div className="glass-card glass-card-hover rounded-xl p-5">
                   <h3
                     className="text-[11px] uppercase tracking-[0.16em] mb-3"
                     style={{ color: "rgba(180,178,200,0.45)" }}
@@ -126,7 +134,7 @@ export default function AboutPage() {
 
               {/* Inspired by */}
               <div
-                className="glass-card rounded-2xl p-7"
+                className="glass-card glass-card-hover rounded-2xl p-7"
                 style={{ borderColor: "rgba(124,92,252,0.15)" }}
               >
                 <h2
@@ -159,7 +167,7 @@ export default function AboutPage() {
 
               {/* Get in touch */}
               <div
-                className="glass-card rounded-2xl p-7"
+                className="glass-card glass-card-hover rounded-2xl p-7"
                 style={{ borderColor: "rgba(255,255,255,0.08)" }}
               >
                 <h2
@@ -194,6 +202,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+        </ScrollReveal>
 
       </main>
     </>
