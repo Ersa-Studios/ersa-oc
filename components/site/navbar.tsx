@@ -1,6 +1,7 @@
 // components/site/navbar.tsx
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
@@ -45,7 +46,7 @@ export function Navbar() {
         {/* CENTER — Lion logo */}
         <div className="justify-self-center px-6">
           <Link href="/" className="block transition-opacity duration-200 hover:opacity-75">
-            <img
+            <Image
               src="/ersa.svg"
               alt="Ersa"
               width={34}

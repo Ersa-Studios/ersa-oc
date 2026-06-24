@@ -1,5 +1,4 @@
 // app/join/page.tsx
-import Link from "next/link";
 import { Navbar } from "@/components/site/navbar";
 
 export default function JoinPage() {

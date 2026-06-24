@@ -43,7 +43,7 @@ export default function AboutPage() {
               color: "#fff",
             }}
           >
-            Building public tools for Delhi's makers
+            Building public tools for Delhi&apos;s makers
           </h1>
         </section>
 
