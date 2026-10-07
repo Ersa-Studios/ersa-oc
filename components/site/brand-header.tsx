@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 
 export function BrandHeader() {
   return (
@@ -10,7 +9,6 @@ export function BrandHeader() {
       <nav className="header-nav" aria-label="Main navigation">
         <Link href="/#platforms">Platforms</Link>
         <Link href="/about">About</Link>
-        <a className="open-link" href="https://open.ersa.dev">open.ersa.dev <ArrowUpRight size={14} /></a>
       </nav>
     </header>
   );
