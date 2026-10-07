@@ -48,7 +48,7 @@ export default function BlogIndexPage() {
       <Navbar />
       <main className="relative isolate min-h-[calc(100vh-56px)]">
         <section className="relative z-10 mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-12">
-          <h1 className="text-4xl md:text-5xl font-serif font-semibold tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-sans font-semibold tracking-tight">
             Blog
           </h1>
           <p className="mt-3 text-zinc-300">Notes, build logs, and field reports.</p>
@@ -78,5 +78,4 @@ export default function BlogIndexPage() {
     </>
   );
 }
-
 

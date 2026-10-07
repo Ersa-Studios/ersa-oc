@@ -102,7 +102,7 @@ export default function JoinPage() {
 
           {/* Headline */}
           <h1
-            className="font-serif font-semibold"
+            className="font-sans font-semibold"
             style={{
               fontSize: "clamp(2.6rem, 6.5vw, 5rem)",
               lineHeight: "1.04",
