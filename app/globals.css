@@ -344,8 +344,7 @@ body { background: #0A0A0A !important; }
 .wearable-screen { min-width: 0; padding: 14px; display: flex; flex-direction: column; background: linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012)); border: 1px solid rgba(255,255,255,.1); }
 .wearable-screen:first-child { grid-column: span 2; grid-row: span 2; padding: 18px; }
 .screen-image-wrap { min-height: 140px; flex: 1; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at center,rgba(255,255,255,.035),transparent 72%), #030303; border: 1px solid rgba(255,255,255,.08); }
-.screen-image-wrap img { width: min(100%,200px); height: auto; image-rendering: pixelated; }
-.wearable-screen:first-child .screen-image-wrap img { width: min(100%,280px); }
+.screen-image-wrap img { width: min(100%,200px); height: auto; image-rendering: auto; }
 .wearable-screen figcaption { min-height: 39px; display: flex; align-items: end; gap: 11px; padding-top: 13px; }
 .screen-index { color: #A8D66D; font-size: 8px; letter-spacing: .12em; }
 .screen-caption { display: flex; flex-direction: column; gap: 4px; }.screen-caption b { font-size: 10px; font-weight: 500; }.screen-caption small { color: rgba(244,243,240,.42); font-size: 9px; }
