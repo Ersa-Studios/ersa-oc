@@ -32,6 +32,7 @@ export default function WearablePage() {
           <div className="wearable-resource-secondary">
             <a href="https://github.com/ersascape/ersawearableos#build-and-validate" target="_blank" rel="noopener noreferrer">Getting started <ArrowUpRight size={13} /></a>
             <a href="https://pkgs-wearables.ersa.dev/wiki/" target="_blank" rel="noopener noreferrer">Wiki <ArrowUpRight size={13} /></a>
+            <a href="https://pkgs-wearables.ersa.dev/wiki/api/" target="_blank" rel="noopener noreferrer">C++ API <ArrowUpRight size={13} /></a>
             <a href="https://pkgs-wearables.ersa.dev/" target="_blank" rel="noopener noreferrer">Arch packages <ArrowUpRight size={13} /></a>
           </div>
         </div>
@@ -105,6 +106,7 @@ export default function WearablePage() {
           <p>Applications use stable hardware contracts; platform adapters and board support connect those contracts to each device.</p>
         </div>
         <p className="architecture-takeaway"><span>THE SHORT VERSION</span><strong>Applications → HAL contracts → platform adapters + drivers → board support</strong></p>
+        <p className="architecture-runtime-note">The runtime scheduler waits for real service deadlines and GPIO or BLE wake events. When the watch has been idle for five seconds and no work blocks it, FreeRTOS tickless idle can enter BLE-coordinated light sleep. The e-paper driver switches off panel drive voltage after refresh while the image remains visible.</p>
         <div className="architecture-diagram-list">
           <figure className="wearable-diagram">
             <figcaption>HAL AND BOARD LAYERS</figcaption>
@@ -142,7 +144,7 @@ export default function WearablePage() {
               <div className="control-connector"><span>→</span></div>
               <div className="control-node"><small>EXISTING SERVICES</small><strong>Firmware</strong><span>BLE · battery · power · apps</span></div>
             </div>
-            <div className="control-logs"><span>DIAGNOSTIC LOG RING</span><strong>16 records</strong><span className="control-logs-link" aria-hidden="true">↔</span><span>Command dispatcher</span></div>
+            <div className="control-logs"><span>DIAGNOSTIC LOG RING</span><strong>8 records</strong><span className="control-logs-link" aria-hidden="true">↔</span><span>Command dispatcher</span></div>
           </figure>
         </div>
       </section>

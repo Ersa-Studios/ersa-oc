@@ -371,6 +371,7 @@ body { background: #0A0A0A !important; }
 .architecture-takeaway { display: flex; align-items: center; gap: 20px; margin: -7px 0 18px; padding: 14px 16px; border: 1px solid rgba(168,214,109,.16); background: rgba(168,214,109,.025); }
 .architecture-takeaway span { flex: 0 0 auto; color: rgba(168,214,109,.72); font-size: 8px; letter-spacing: .14em; }
 .architecture-takeaway strong { color: rgba(244,243,240,.82); font-size: 11px; font-weight: 500; letter-spacing: -.01em; }
+.architecture-runtime-note { max-width: 900px; margin: 0 0 28px; color: rgba(244,243,240,.62); font-size: 12px; line-height: 1.8; }
 .architecture-diagram-list { display: grid; gap: 16px; }
 .wearable-diagram { min-width: 0; margin: 0; padding: 20px 22px 22px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.018); }
 .wearable-diagram figcaption { margin-bottom: 13px; color: rgba(244,243,240,.42); font-size: 8px; letter-spacing: .13em; }
