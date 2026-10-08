@@ -31,6 +31,7 @@ export default function WearablePage() {
           <a href="https://github.com/ersascape/ersawearableos" target="_blank" rel="noopener noreferrer" className="wearable-github-link">Browse source on GitHub <ArrowUpRight size={15} /></a>
           <div className="wearable-resource-secondary">
             <a href="https://github.com/ersascape/ersawearableos#build-and-validate" target="_blank" rel="noopener noreferrer">Getting started <ArrowUpRight size={13} /></a>
+            <Link href="/wearable/flash">Flash firmware <ArrowUpRight size={13} /></Link>
             <a href="https://pkgs-wearables.ersa.dev/wiki/" target="_blank" rel="noopener noreferrer">Wiki <ArrowUpRight size={13} /></a>
             <a href="https://pkgs-wearables.ersa.dev/wiki/api/" target="_blank" rel="noopener noreferrer">C++ API <ArrowUpRight size={13} /></a>
             <a href="https://pkgs-wearables.ersa.dev/" target="_blank" rel="noopener noreferrer">Arch packages <ArrowUpRight size={13} /></a>
