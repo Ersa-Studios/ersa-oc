@@ -9,7 +9,6 @@ import { X } from "lucide-react";
 const NAV_LINKS = [
   { to: "/",      label: "Home"  },
   { to: "/about", label: "About" },
-  { to: "/join",  label: "Join"  },
 ];
 
 export function Navbar() {

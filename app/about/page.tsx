@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowUpRight, Mail, MessageCircle, Send } from "lucide-react";
 import { BrandHeader } from "@/components/site/brand-header";
 import { PlatformExplore } from "@/components/site/platform-explore";
@@ -56,10 +55,10 @@ export default function AboutPage() {
         <h1 id="about-title">Open hardware.<br />Shared <span>possibility.</span></h1>
         <div className="about-hero-bottom">
           <p>Ersa is an open hardware and software collective building tools people can understand, repair, and make their own. We share the work as we go, so others can learn from it and take it further.</p>
-          <div className="community-links" aria-label="Join the Ersa community">
+          <div className="community-links" id="community" aria-label="Join the Ersa community">
             <a href="https://t.me/ersaopencollective" target="_blank" rel="noopener noreferrer" className="community-link telegram-link"><Send size={15} /> Telegram <ArrowUpRight size={13} /></a>
             <a href="https://discord.gg/UgfguRX4mk" target="_blank" rel="noopener noreferrer" className="community-link discord-link"><MessageCircle size={15} /> Discord <ArrowUpRight size={13} /></a>
-            <a href="mailto:oc@ersa.dev" className="community-link email-link"><Mail size={15} /> Email us <ArrowUpRight size={13} /></a>
+            <a href="mailto:gagan@ersa.dev" className="community-link email-link"><Mail size={15} /> Email us <ArrowUpRight size={13} /></a>
           </div>
         </div>
       </section>
@@ -105,7 +104,7 @@ export default function AboutPage() {
             </article>
           ))}
         </div>
-        <p className="partner-note">Have a project or practice that aligns with ours? <Link href="/join">Let&apos;s talk <ArrowUpRight size={13} /></Link></p>
+        <p className="partner-note">Have a project or practice that aligns with ours? <a href="mailto:gagan@ersa.dev">Let&apos;s talk <ArrowUpRight size={13} /></a></p>
       </section>
 
       <PlatformExplore />
