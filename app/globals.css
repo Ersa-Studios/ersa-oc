@@ -337,7 +337,7 @@ body { background: #0A0A0A !important; }
 .product-resource-links .product-primary-link { margin-top: 0; }
 .wearable-resource-links { align-items: center; gap: 24px; margin-top: 30px; }
 .wearable-primary-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.wearable-source-button, .wearable-start-button { display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 0 11px; font-size: 9px; font-weight: 550; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.wearable-source-button, .wearable-start-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; width: 112px; min-height: 34px; padding: 0 8px; font-size: 9px; font-weight: 550; transition: background .2s ease, border-color .2s ease, color .2s ease; }
 .wearable-source-button { border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.055); color: rgba(244,243,240,.78); }
 .wearable-source-button:hover { border-color: rgba(255,255,255,.34); background: rgba(255,255,255,.1); color: #f4f3f0; }
 .wearable-start-button { border: 1px solid #A8D66D; background: #A8D66D; color: #10120c; }

@@ -29,8 +29,8 @@ export default function WearablePage() {
         <p className="product-lede">An open-source watch operating environment built to be understood, repaired, and extended. The firmware brings a calm, text-first interface to the Ampere Works T1E.</p>
         <div className="product-resource-links wearable-resource-links" aria-label="ersa.wearable resources">
           <div className="wearable-primary-actions">
-            <a href="https://github.com/ersascape/ersawearableos" target="_blank" rel="noopener noreferrer" className="wearable-source-button">View source <ArrowUpRight size={13} /></a>
             <Link href="/wearable/flash" className="wearable-start-button">Get started <ArrowUpRight size={13} /></Link>
+            <a href="https://github.com/ersascape/ersawearableos" target="_blank" rel="noopener noreferrer" className="wearable-source-button">View source <ArrowUpRight size={13} /></a>
           </div>
           <div className="wearable-resource-secondary">
             <a href="https://pkgs-wearables.ersa.dev/wiki/" target="_blank" rel="noopener noreferrer">Wiki <ArrowUpRight size={13} /></a>
