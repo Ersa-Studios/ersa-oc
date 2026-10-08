@@ -18,13 +18,6 @@ const screens = [
   { image: "system_status.png", title: "System status", detail: "Device diagnostics" },
 ];
 
-const specifications = [
-  { label: "BOARD", value: "Ampere Works T1E · XIAO ESP32-C3" },
-  { label: "DISPLAY", value: "1.54″ monochrome e-paper · 200 × 200" },
-  { label: "TIMEKEEPING", value: "DS3231 real-time clock" },
-  { label: "COMPANION", value: "Apple notifications and media over Bluetooth LE" },
-];
-
 export default function WearablePage() {
   return (
     <main className="site-shell product-page wearable-page">
@@ -34,7 +27,11 @@ export default function WearablePage() {
         <p className="eyebrow product-kicker"><span className="status-dot" /> ERSA.WEARABLE · OPEN WATCH PLATFORM</p>
         <h1 id="wearable-title"><span>ersa.</span><em>wearable</em></h1>
         <p className="product-lede">An open-source watch operating environment built to be understood, repaired, and extended. The firmware brings a calm, text-first interface to the Ampere Works T1E.</p>
-        <a href="https://github.com/ersascape/ersawearableos" target="_blank" rel="noopener noreferrer" className="product-primary-link">Explore the firmware on GitHub <ArrowUpRight size={15} /></a>
+        <div className="product-resource-links" aria-label="ersa.wearable resources">
+          <a href="https://github.com/ersascape/ersawearableos" target="_blank" rel="noopener noreferrer" className="product-primary-link">Firmware on GitHub <ArrowUpRight size={15} /></a>
+          <a href="https://pkgs-wearables.ersa.dev" target="_blank" rel="noopener noreferrer" className="product-primary-link">Arch package repository <ArrowUpRight size={15} /></a>
+          <a href="https://pkgs-wearables.ersa.dev/wiki" target="_blank" rel="noopener noreferrer" className="product-primary-link">Wiki <ArrowUpRight size={15} /></a>
+        </div>
       </section>
 
       <section className="device-section" id="screens" aria-labelledby="screens-title">
@@ -52,10 +49,97 @@ export default function WearablePage() {
         </div>
       </section>
 
-      <section className="product-details" aria-labelledby="wearable-details-title">
-        <div className="product-details-heading"><p className="eyebrow">OPEN FIRMWARE · REAL HARDWARE</p><h2 id="wearable-details-title">Built in layers.<br />Ready to make yours.</h2></div>
-        <div className="spec-list">
-          {specifications.map((spec) => <div className="spec-row" key={spec.label}><span>{spec.label}</span><b>{spec.value}</b></div>)}
+      <section className="wearable-capabilities" aria-labelledby="capabilities-title">
+        <div className="product-section-heading">
+          <div><p className="eyebrow">MADE FOR THE EVERYDAY</p><h2 id="capabilities-title">More than a watchface.</h2></div>
+          <p>A compact set of useful tools, with the important system behavior documented in the open.</p>
+        </div>
+        <div className="wearable-capability-grid">
+          <article className="wearable-capability wearable-capability-organizer">
+            <span className="capability-index">01 / ORGANIZER</span>
+            <h3>Your day, at a glance.</h3>
+            <p>Bring CalDAV events and tasks to the watch. Browse the daily agenda, expand supported recurring events, and keep a local cache for the small screen.</p>
+            <div className="capability-tags"><span>CALENDAR</span><span>AGENDA</span><span>TASKS</span></div>
+          </article>
+          <article className="wearable-capability">
+            <span className="capability-index">02 / COMPANION</span>
+            <h3>Stay in the loop.</h3>
+            <p>Apple notifications, caller details, and Now Playing metadata arrive over Bluetooth LE, with supported media controls on the watch.</p>
+            <div className="capability-tags"><span>ANCS</span><span>AMS</span><span>BLUETOOTH LE</span></div>
+          </article>
+          <article className="wearable-capability">
+            <span className="capability-index">03 / UPDATES &amp; TOOLS</span>
+            <h3>Inspectable by design.</h3>
+            <p>Over-the-air updates verify the image before installing to an inactive slot, with boot rollback protection. The <code>ewctl</code> USB tool exposes status, power, and logs.</p>
+            <div className="capability-tags"><span>A/B UPDATES</span><span>USB CONTROL</span><span>OPEN SOURCE</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section className="wearable-device" aria-labelledby="device-title">
+        <div className="terra-device-layout">
+          <figure className="terra-device-photo">
+            <Image src="/platforms/wearable/ampere-terra-runtime.png" alt="Ampere Terra runtime watch with a transparent case and mesh band" width={1000} height={1000} priority unoptimized />
+          </figure>
+          <div className="terra-device-copy">
+            <h2 id="device-title">Built for Ampere Terra.</h2>
+            <p className="terra-device-intro">The current ersa.wearable target, developed with Ampere Works.</p>
+            <a className="terra-device-link" href="https://ampere.works/t1e" target="_blank" rel="noopener noreferrer">Visit Ampere Works <ArrowUpRight size={15} /></a>
+            <dl className="terra-device-specs">
+              <div><dt>BOARD</dt><dd>Ampere Works T1E · XIAO ESP32-C3</dd></div>
+              <div><dt>DISPLAY</dt><dd>1.54″ monochrome e-paper · 200 × 200</dd></div>
+              <div><dt>TIMEKEEPING</dt><dd>DS3231 real-time clock</dd></div>
+              <div><dt>INPUT</dt><dd>Two physical buttons</dd></div>
+              <div><dt>BATTERY</dt><dd>Voltage sensing · percentage is estimated</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section className="wearable-architecture" aria-labelledby="architecture-title">
+        <div className="product-section-heading">
+          <div><p className="eyebrow">PLATFORM ARCHITECTURE</p><h2 id="architecture-title">Clear boundaries.<br />Composable hardware.</h2></div>
+          <p>The firmware separates application code from hardware details through stable HAL contracts and board-specific composition.</p>
+        </div>
+        <div className="architecture-diagram-list">
+          <figure className="wearable-diagram">
+            <figcaption>HAL AND BOARD LAYERS</figcaption>
+            <div className="hal-stack" aria-label="Wearable operating system architecture from applications through HAL contracts and platform drivers to board support">
+              <div className="hal-layer hal-layer-apps">
+                <div className="hal-layer-heading"><strong>Applications &amp; services</strong><span>APPLICATION LAYER</span></div>
+                <div className="hal-layer-items"><div>Watch interface</div><div>Bluetooth services</div><div>Power management</div><div>Time &amp; alarms</div></div>
+              </div>
+              <div className="hal-relation"><i aria-hidden="true" /><span>depend on stable contracts</span><i aria-hidden="true" /></div>
+              <div className="hal-layer hal-layer-contracts">
+                <div className="hal-layer-heading"><strong>Hardware abstraction layer</strong><code>include/ersa/hal/</code></div>
+                <div className="hal-layer-items"><div>Display</div><div>Input</div><div>Connectivity</div><div>Power</div><div>Storage</div></div>
+              </div>
+              <div className="hal-relation"><i aria-hidden="true" /><span>implemented for each target</span><i aria-hidden="true" /></div>
+              <div className="hal-layer hal-layer-implementation">
+                <div className="hal-implementation-group"><div className="hal-layer-heading"><strong>Platform adapter</strong><code>src/hal/&lt;platform&gt;/</code></div><div className="hal-layer-items"><div>MCU</div><div>RTOS</div></div></div>
+                <div className="hal-implementation-group"><div className="hal-layer-heading"><strong>Peripheral drivers</strong><code>src/drivers/&lt;domain&gt;/</code></div><div className="hal-layer-items"><div>Device drivers</div><div>Bus interfaces</div></div></div>
+              </div>
+              <div className="hal-relation"><i aria-hidden="true" /><span>selected and composed by</span><i aria-hidden="true" /></div>
+              <div className="hal-layer hal-layer-board">
+                <div className="hal-layer-heading"><strong>Board support package</strong><span>TARGET HARDWARE</span></div>
+                <div className="hal-layer-items"><div>Manufacturer</div><div>Board family</div><div>Device variant</div><div>Build configuration</div></div>
+                <code className="hal-layer-path">src/bsp/&lt;manufacturer&gt;/&lt;platform&gt;/&lt;codename&gt;/</code>
+              </div>
+            </div>
+          </figure>
+          <figure className="wearable-diagram">
+            <figcaption>HOST CONTROL BRIDGE</figcaption>
+            <div className="control-flow" aria-label="ewctl host commands travel over USB Serial JTAG to the application loop and existing firmware services">
+              <div className="control-node"><small>HOST</small><strong>ewctl</strong><span>CLI</span></div>
+              <div className="control-connector"><span>⇄</span><small>USB Serial/JTAG<br />NDJSON</small></div>
+              <div className="control-node"><small>FIRMWARE INPUT</small><strong>USB endpoint</strong><span>Bounded reads</span></div>
+              <div className="control-connector"><span>→</span></div>
+              <div className="control-node control-node-loop"><small>APPLICATION LOOP</small><strong>Scan → parse → dispatch</strong><span>One command per pass · 512-byte limit</span></div>
+              <div className="control-connector"><span>→</span></div>
+              <div className="control-node"><small>EXISTING SERVICES</small><strong>Firmware</strong><span>BLE · battery · power · apps</span></div>
+            </div>
+            <div className="control-logs"><span>DIAGNOSTIC LOG RING</span><strong>16 records</strong><span className="control-logs-link" aria-hidden="true">↔</span><span>Command dispatcher</span></div>
+          </figure>
         </div>
       </section>
 
