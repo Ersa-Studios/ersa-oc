@@ -335,6 +335,12 @@ body { background: #0A0A0A !important; }
 .product-primary-link:hover { gap: 13px; color: #d7efb7; }
 .product-resource-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 26px; }
 .product-resource-links .product-primary-link { margin-top: 0; }
+.wearable-resource-links { align-items: center; gap: 24px; margin-top: 30px; }
+.wearable-github-link { display: inline-flex; align-items: center; gap: 10px; padding: 12px 15px; border: 1px solid #A8D66D; background: #A8D66D; color: #10120c; font-size: 10px; font-weight: 600; transition: background .2s ease, border-color .2s ease, gap .2s ease; }
+.wearable-github-link:hover { gap: 14px; border-color: #c1eb8b; background: #c1eb8b; }
+.wearable-resource-secondary { display: flex; flex-wrap: wrap; gap: 9px 20px; }
+.wearable-resource-secondary a { display: inline-flex; align-items: center; gap: 6px; color: rgba(244,243,240,.48); font-size: 10px; transition: color .2s ease; }
+.wearable-resource-secondary a:hover { color: #f4f3f0; }
 .compute-primary-link { border-color: rgba(232,168,74,.45); color: #E8A84A; }.compute-primary-link:hover { color: #f4ca8f; }
 .product-title-row { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
 .product-title-row .coming-soon-badge { transform: translateY(-5px); }
@@ -362,6 +368,9 @@ body { background: #0A0A0A !important; }
 .terra-device-specs dt { color: rgba(244,243,240,.38); font-size: 8px; letter-spacing: .13em; }
 .terra-device-specs dd { color: rgba(244,243,240,.78); font-size: 10px; line-height: 1.55; }
 .wearable-architecture { width: min(1120px, calc(100% - 64px)); margin-inline: auto; padding: 54px 0 82px; border-top: 1px solid rgba(255,255,255,.11); }
+.architecture-takeaway { display: flex; align-items: center; gap: 20px; margin: -7px 0 18px; padding: 14px 16px; border: 1px solid rgba(168,214,109,.16); background: rgba(168,214,109,.025); }
+.architecture-takeaway span { flex: 0 0 auto; color: rgba(168,214,109,.72); font-size: 8px; letter-spacing: .14em; }
+.architecture-takeaway strong { color: rgba(244,243,240,.82); font-size: 11px; font-weight: 500; letter-spacing: -.01em; }
 .architecture-diagram-list { display: grid; gap: 16px; }
 .wearable-diagram { min-width: 0; margin: 0; padding: 20px 22px 22px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.018); }
 .wearable-diagram figcaption { margin-bottom: 13px; color: rgba(244,243,240,.42); font-size: 8px; letter-spacing: .13em; }
@@ -453,6 +462,8 @@ body { background: #0A0A0A !important; }
   .partner-grid { grid-template-columns: 1fr; margin-top: 27px; }.partner-card { min-height: 205px; }
   .product-hero, .device-section, .product-next, .compute-usecases, .compute-foundation { width: min(100% - 40px, 560px); }
   .product-hero { padding: 39px 0 58px; }.back-link { margin-bottom: 34px; }.product-hero h1 { font-size: clamp(45px, 12vw, 70px); }
+  .wearable-resource-links { align-items: flex-start; flex-direction: column; gap: 17px; margin-top: 23px; }
+  .wearable-resource-secondary { gap: 10px 17px; }
   .device-section, .compute-usecases { padding: 46px 0 60px; }.product-section-heading { display: block; }.product-section-heading > p { margin-top: 14px; }
   .wearable-capabilities { width: min(100% - 40px, 560px); padding: 46px 0 58px; }
   .wearable-capability-grid { grid-template-columns: 1fr; }
@@ -462,6 +473,8 @@ body { background: #0A0A0A !important; }
   .terra-device-photo { width: min(100%,380px); margin-inline: auto; }
   .terra-device-copy h2 { font-size: clamp(29px,8vw,38px); }
   .wearable-architecture { width: min(100% - 40px, 560px); padding: 46px 0 60px; }
+  .architecture-takeaway { align-items: flex-start; flex-direction: column; gap: 7px; margin-top: 0; padding: 13px; }
+  .architecture-takeaway strong { line-height: 1.6; }
   .wearable-diagram { padding: 16px; }
   .hal-layer { padding: 13px; }
   .hal-layer-heading { align-items: flex-start; flex-direction: column; gap: 5px; }

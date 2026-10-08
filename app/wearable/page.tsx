@@ -27,10 +27,13 @@ export default function WearablePage() {
         <p className="eyebrow product-kicker"><span className="status-dot" /> ERSA.WEARABLE · OPEN WATCH PLATFORM</p>
         <h1 id="wearable-title"><span>ersa.</span><em>wearable</em></h1>
         <p className="product-lede">An open-source watch operating environment built to be understood, repaired, and extended. The firmware brings a calm, text-first interface to the Ampere Works T1E.</p>
-        <div className="product-resource-links" aria-label="ersa.wearable resources">
-          <a href="https://github.com/ersascape/ersawearableos" target="_blank" rel="noopener noreferrer" className="product-primary-link">Firmware on GitHub <ArrowUpRight size={15} /></a>
-          <a href="https://pkgs-wearables.ersa.dev" target="_blank" rel="noopener noreferrer" className="product-primary-link">Arch package repository <ArrowUpRight size={15} /></a>
-          <a href="https://pkgs-wearables.ersa.dev/wiki" target="_blank" rel="noopener noreferrer" className="product-primary-link">Wiki <ArrowUpRight size={15} /></a>
+        <div className="product-resource-links wearable-resource-links" aria-label="ersa.wearable resources">
+          <a href="https://github.com/ersascape/ersawearableos" target="_blank" rel="noopener noreferrer" className="wearable-github-link">Browse source on GitHub <ArrowUpRight size={15} /></a>
+          <div className="wearable-resource-secondary">
+            <a href="https://github.com/ersascape/ersawearableos#build-and-validate" target="_blank" rel="noopener noreferrer">Getting started <ArrowUpRight size={13} /></a>
+            <a href="https://pkgs-wearables.ersa.dev/wiki/" target="_blank" rel="noopener noreferrer">Wiki <ArrowUpRight size={13} /></a>
+            <a href="https://pkgs-wearables.ersa.dev/" target="_blank" rel="noopener noreferrer">Arch packages <ArrowUpRight size={13} /></a>
+          </div>
         </div>
       </section>
 
@@ -52,26 +55,26 @@ export default function WearablePage() {
       <section className="wearable-capabilities" aria-labelledby="capabilities-title">
         <div className="product-section-heading">
           <div><p className="eyebrow">MADE FOR THE EVERYDAY</p><h2 id="capabilities-title">More than a watchface.</h2></div>
-          <p>A compact set of useful tools, with the important system behavior documented in the open.</p>
+          <p>Everyday tools, with the system behavior documented in the open.</p>
         </div>
         <div className="wearable-capability-grid">
           <article className="wearable-capability wearable-capability-organizer">
             <span className="capability-index">01 / ORGANIZER</span>
             <h3>Your day, at a glance.</h3>
-            <p>Bring CalDAV events and tasks to the watch. Browse the daily agenda, expand supported recurring events, and keep a local cache for the small screen.</p>
+            <p>Sync CalDAV events and tasks, browse the daily agenda, and keep a local cache for quick access.</p>
             <div className="capability-tags"><span>CALENDAR</span><span>AGENDA</span><span>TASKS</span></div>
           </article>
           <article className="wearable-capability">
             <span className="capability-index">02 / COMPANION</span>
             <h3>Stay in the loop.</h3>
-            <p>Apple notifications, caller details, and Now Playing metadata arrive over Bluetooth LE, with supported media controls on the watch.</p>
+            <p>See Apple notifications and caller details, then view Now Playing metadata and control supported media over Bluetooth LE.</p>
             <div className="capability-tags"><span>ANCS</span><span>AMS</span><span>BLUETOOTH LE</span></div>
           </article>
           <article className="wearable-capability">
             <span className="capability-index">03 / UPDATES &amp; TOOLS</span>
-            <h3>Inspectable by design.</h3>
-            <p>Over-the-air updates verify the image before installing to an inactive slot, with boot rollback protection. The <code>ewctl</code> USB tool exposes status, power, and logs.</p>
-            <div className="capability-tags"><span>A/B UPDATES</span><span>USB CONTROL</span><span>OPEN SOURCE</span></div>
+            <h3>Updates with a safety net.</h3>
+            <p>Over-the-air updates validate firmware before writing to the inactive slot; boot rollback protection handles failed starts.</p>
+            <div className="capability-tags"><span>A/B UPDATES</span><span>ROLLBACK</span><span>OPEN SOURCE</span></div>
           </article>
         </div>
       </section>
@@ -83,7 +86,7 @@ export default function WearablePage() {
           </figure>
           <div className="terra-device-copy">
             <h2 id="device-title">Built for Ampere Terra.</h2>
-            <p className="terra-device-intro">The current ersa.wearable target, developed with Ampere Works.</p>
+            <p className="terra-device-intro">The T1E is the first supported target for ersa.wearable.</p>
             <a className="terra-device-link" href="https://ampere.works/t1e" target="_blank" rel="noopener noreferrer">Visit Ampere Works <ArrowUpRight size={15} /></a>
             <dl className="terra-device-specs">
               <div><dt>BOARD</dt><dd>Ampere Works T1E · XIAO ESP32-C3</dd></div>
@@ -99,8 +102,9 @@ export default function WearablePage() {
       <section className="wearable-architecture" aria-labelledby="architecture-title">
         <div className="product-section-heading">
           <div><p className="eyebrow">PLATFORM ARCHITECTURE</p><h2 id="architecture-title">Clear boundaries.<br />Composable hardware.</h2></div>
-          <p>The firmware separates application code from hardware details through stable HAL contracts and board-specific composition.</p>
+          <p>Applications use stable hardware contracts; platform adapters and board support connect those contracts to each device.</p>
         </div>
+        <p className="architecture-takeaway"><span>THE SHORT VERSION</span><strong>Applications → HAL contracts → platform adapters + drivers → board support</strong></p>
         <div className="architecture-diagram-list">
           <figure className="wearable-diagram">
             <figcaption>HAL AND BOARD LAYERS</figcaption>
