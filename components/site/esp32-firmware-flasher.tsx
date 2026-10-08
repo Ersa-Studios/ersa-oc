@@ -10,7 +10,7 @@ type OtaManifest = {
   schema: number;
   device_name: string;
   codename: string;
-  platform?: Platform;
+  platform: Platform;
   tag?: string;
   version?: string;
   firmware_url: string;
@@ -19,7 +19,6 @@ type OtaManifest = {
 };
 
 const otaRoot = "https://pkgs-wearables.ersa.dev/ota/terra";
-const legacyC3Manifest = "https://pkgs-wearables.ersa.dev/ota/terra/ota.json";
 const chipNames: Record<Platform, string> = {
   xiao_esp32c3: "ESP32-C3",
   xiao_esp32c6: "ESP32-C6",
@@ -27,15 +26,7 @@ const chipNames: Record<Platform, string> = {
 
 async function fetchManifest(platform: Platform): Promise<OtaManifest> {
   const manifestUrl = `${otaRoot}/${platform}/ota.json`;
-  let response = await fetch(manifestUrl, { cache: "no-store" });
-  let legacy = false;
-
-  // Keep the existing C3 installation path working until its platform-scoped
-  // manifest is published. Never use an unqualified manifest for a C6.
-  if (response.status === 404 && platform === "xiao_esp32c3") {
-    response = await fetch(legacyC3Manifest, { cache: "no-store" });
-    legacy = true;
-  }
+  const response = await fetch(manifestUrl, { cache: "no-store" });
 
   if (!response.ok) {
     throw new Error(response.status === 404
@@ -47,14 +38,8 @@ async function fetchManifest(platform: Platform): Promise<OtaManifest> {
   if (manifest.schema !== 1 || manifest.codename !== "terra") {
     throw new Error("The firmware manifest is invalid or for an unsupported device.");
   }
-  if (manifest.platform && manifest.platform !== platform) {
+  if (manifest.platform !== platform) {
     throw new Error(`This manifest is for ${manifest.platform}, not ${platform}.`);
-  }
-  if (!manifest.platform && platform !== "xiao_esp32c3") {
-    throw new Error("This legacy manifest only identifies ESP32-C3 firmware.");
-  }
-  if (legacy && platform !== "xiao_esp32c3") {
-    throw new Error("The legacy firmware manifest cannot be used for ESP32-C6.");
   }
   if (!/^https:\/\//i.test(manifest.firmware_url) || !/^[a-f0-9]{64}$/i.test(manifest.sha256)) {
     throw new Error("The firmware URL or SHA-256 checksum is missing or invalid.");
