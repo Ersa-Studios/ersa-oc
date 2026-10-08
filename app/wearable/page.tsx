@@ -62,7 +62,7 @@ export default function WearablePage() {
           <article className="wearable-capability wearable-capability-organizer">
             <span className="capability-index">01 / ORGANIZER</span>
             <h3>Your day, at a glance.</h3>
-            <p>Sync CalDAV events and tasks, browse the daily agenda, and keep a local cache for quick access.</p>
+            <p>Calendar, agenda, and checklist apps keep everyday information readable on the watch&apos;s monochrome screen.</p>
             <div className="capability-tags"><span>CALENDAR</span><span>AGENDA</span><span>TASKS</span></div>
           </article>
           <article className="wearable-capability">
@@ -72,10 +72,10 @@ export default function WearablePage() {
             <div className="capability-tags"><span>ANCS</span><span>AMS</span><span>BLUETOOTH LE</span></div>
           </article>
           <article className="wearable-capability">
-            <span className="capability-index">03 / UPDATES &amp; TOOLS</span>
-            <h3>Updates with a safety net.</h3>
-            <p>Over-the-air updates validate firmware before writing to the inactive slot; boot rollback protection handles failed starts.</p>
-            <div className="capability-tags"><span>A/B UPDATES</span><span>ROLLBACK</span><span>OPEN SOURCE</span></div>
+            <span className="capability-index">03 / CALDAV + NEXTCLOUD</span>
+            <h3>Your Nextcloud, in sync.</h3>
+            <p>Sync events and task lists over CalDAV. Recurring events expand into the agenda, tasks can be checked off on the watch, and a local cache keeps the last sync available.</p>
+            <div className="capability-tags"><span>NEXTCLOUD</span><span>CALDAV</span><span>EVENTS + TASKS</span></div>
           </article>
         </div>
       </section>
