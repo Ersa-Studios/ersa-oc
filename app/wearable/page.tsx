@@ -28,10 +28,11 @@ export default function WearablePage() {
         <h1 id="wearable-title"><span>ersa.</span><em>wearable</em></h1>
         <p className="product-lede">An open-source watch operating environment built to be understood, repaired, and extended. The firmware brings a calm, text-first interface to the Ampere Works T1E.</p>
         <div className="product-resource-links wearable-resource-links" aria-label="ersa.wearable resources">
-          <a href="https://github.com/ersascape/ersawearableos" target="_blank" rel="noopener noreferrer" className="wearable-github-link">Browse source on GitHub <ArrowUpRight size={15} /></a>
+          <div className="wearable-primary-actions">
+            <a href="https://github.com/ersascape/ersawearableos" target="_blank" rel="noopener noreferrer" className="wearable-source-button">View source <ArrowUpRight size={13} /></a>
+            <Link href="/wearable/flash" className="wearable-start-button">Get started <ArrowUpRight size={13} /></Link>
+          </div>
           <div className="wearable-resource-secondary">
-            <a href="https://github.com/ersascape/ersawearableos#build-and-validate" target="_blank" rel="noopener noreferrer">Getting started <ArrowUpRight size={13} /></a>
-            <Link href="/wearable/flash">Flash firmware <ArrowUpRight size={13} /></Link>
             <a href="https://pkgs-wearables.ersa.dev/wiki/" target="_blank" rel="noopener noreferrer">Wiki <ArrowUpRight size={13} /></a>
             <a href="https://pkgs-wearables.ersa.dev/wiki/api/" target="_blank" rel="noopener noreferrer">C++ API <ArrowUpRight size={13} /></a>
             <a href="https://pkgs-wearables.ersa.dev/" target="_blank" rel="noopener noreferrer">Arch packages <ArrowUpRight size={13} /></a>
