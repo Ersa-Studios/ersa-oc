@@ -30,7 +30,7 @@ export default function WearableFlashPage() {
           <article>
             <span>02 / TARGET</span>
             <h2>Choose your board.</h2>
-            <p>Select ESP32-C3 or ESP32-C6. The flasher checks the connected board before installing anything.</p>
+            <p>Select ESP32-C3 or ESP32-C6. The flasher checks the connected board. For a legacy partition layout, use the one-time migration option.</p>
           </article>
           <article>
             <span>03 / FINISH</span>
