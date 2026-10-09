@@ -6,7 +6,13 @@ import type { IEspLoaderTerminal } from "esptool-js";
 
 type Platform = "xiao_esp32c3" | "xiao_esp32c6";
 type FlashAsset = { url: string; sha256: string; size: number; address: number };
-type MigrationAssets = { bootloader: FlashAsset; partitions: FlashAsset; boot_app0: FlashAsset };
+type MigrationManifest = {
+  schema: number;
+  codename: string;
+  platform: Platform;
+  tag: string;
+  assets: { bootloader: FlashAsset; partitions: FlashAsset; boot_app0: FlashAsset };
+};
 type OtaManifest = {
   schema: number;
   device_name: string;
@@ -17,7 +23,6 @@ type OtaManifest = {
   firmware_url: string;
   sha256: string;
   size: number;
-  migration?: MigrationAssets;
 };
 
 const otaRoot = "https://pkgs-wearables.ersa.dev/ota/terra";
@@ -38,7 +43,7 @@ async function fetchManifest(platform: Platform): Promise<OtaManifest> {
   }
 
   const manifest = await response.json() as OtaManifest;
-  if (![1, 2].includes(manifest.schema) || manifest.codename !== "terra") {
+  if (manifest.schema !== 1 || manifest.codename !== "terra") {
     throw new Error("The firmware manifest is invalid or for an unsupported device.");
   }
   if (manifest.platform !== platform) {
@@ -50,18 +55,26 @@ async function fetchManifest(platform: Platform): Promise<OtaManifest> {
   if (!Number.isSafeInteger(manifest.size) || manifest.size < 1 || manifest.size > 8 * 1024 * 1024) {
     throw new Error("The firmware image size is invalid.");
   }
-  if (manifest.schema === 2) {
-    if (!manifest.migration) throw new Error("The partition migration assets are missing from the manifest.");
-    for (const key of Object.keys(migrationOffsets) as (keyof MigrationAssets)[]) {
-      const asset = manifest.migration[key];
-      if (!asset || !/^https:\/\//i.test(asset.url) || !/^[a-f0-9]{64}$/i.test(asset.sha256) ||
-          !Number.isSafeInteger(asset.size) || asset.size < 1 || asset.size > 1024 * 1024 ||
-          asset.address !== migrationOffsets[key]) {
-        throw new Error(`The ${key} migration asset is invalid.`);
-      }
+  return manifest;
+}
+
+async function fetchMigrationManifest(platform: Platform, tag: string): Promise<MigrationManifest | null> {
+  if (!tag) return null;
+  const url = `https://pkgs-wearables.ersa.dev/migration/terra/${platform}/migration.json`;
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) return null;
+  const manifest = await response.json() as MigrationManifest;
+  if (manifest.schema !== 1 || manifest.codename !== "terra" || manifest.platform !== platform || manifest.tag !== tag) {
+    return null;
+  }
+  for (const key of Object.keys(migrationOffsets) as (keyof MigrationManifest["assets"])[]) {
+    const asset = manifest.assets?.[key];
+    if (!asset || !/^https:\/\//i.test(asset.url) || !/^[a-f0-9]{64}$/i.test(asset.sha256) ||
+        !Number.isSafeInteger(asset.size) || asset.size < 1 || asset.size > 1024 * 1024 ||
+        asset.address !== migrationOffsets[key]) {
+      return null;
     }
   }
-
   return manifest;
 }
 
@@ -92,6 +105,7 @@ async function downloadVerified(url: string, expectedSize: number, expectedSha25
 export function Esp32FirmwareFlasher() {
   const [platform, setPlatform] = useState<Platform>("xiao_esp32c3");
   const [manifest, setManifest] = useState<OtaManifest | null>(null);
+  const [migrationManifest, setMigrationManifest] = useState<MigrationManifest | null>(null);
   const [manifestState, setManifestState] = useState<"loading" | "ready" | "error">("loading");
   const [manifestError, setManifestError] = useState("");
   const [serialSupported, setSerialSupported] = useState(false);
@@ -108,6 +122,7 @@ export function Esp32FirmwareFlasher() {
   useEffect(() => {
     let current = true;
     setManifest(null);
+    setMigrationManifest(null);
     setManifestState("loading");
     setManifestError("");
     fetchManifest(platform)
@@ -115,6 +130,14 @@ export function Esp32FirmwareFlasher() {
         if (!current) return;
         setManifest(nextManifest);
         setManifestState("ready");
+        const tag = nextManifest.tag || nextManifest.version || "";
+        fetchMigrationManifest(platform, tag)
+          .then((nextMigrationManifest) => {
+            if (current) setMigrationManifest(nextMigrationManifest);
+          })
+          .catch(() => {
+            if (current) setMigrationManifest(null);
+          });
       })
       .catch((error: unknown) => {
         if (!current) return;
@@ -146,14 +169,15 @@ export function Esp32FirmwareFlasher() {
       }
       setStatus("Checking the selected firmware and board…");
       const latest = await fetchManifest(platform);
-      if (migratePartition && (!latest.migration || latest.schema !== 2)) {
-        throw new Error("No verified partition migration is published for this board yet.");
-      }
+      const migrationInfo = migratePartition
+        ? await fetchMigrationManifest(platform, latest.tag || latest.version || "")
+        : null;
+      if (migratePartition && !migrationInfo) throw new Error("No verified partition migration is published for this board yet.");
 
       const firmwareData = await downloadVerified(latest.firmware_url, latest.size, latest.sha256, "Firmware");
       const files: { data: Uint8Array; address: number }[] = [{ data: firmwareData, address: 0x10000 }];
-      if (migratePartition && latest.migration) {
-        const migration = latest.migration;
+      if (migratePartition && migrationInfo) {
+        const migration = migrationInfo.assets;
         const downloaded = await Promise.all([
           downloadVerified(migration.partitions.url, migration.partitions.size, migration.partitions.sha256, "Partition table"),
           downloadVerified(migration.boot_app0.url, migration.boot_app0.size, migration.boot_app0.sha256, "OTA boot data"),
@@ -268,7 +292,7 @@ export function Esp32FirmwareFlasher() {
           {busy ? "Flashing…" : complete ? "Flashed successfully" : "Connect & flash latest"}
           {!busy && !complete && <ArrowUpRight size={14} />}
         </button>
-        <button type="button" className="esp-flasher-button" onClick={() => connectAndFlash(true)} disabled={!canFlash || !manifest?.migration}>
+        <button type="button" className="esp-flasher-button" onClick={() => connectAndFlash(true)} disabled={!canFlash || !migrationManifest || migrationManifest.tag !== (manifest?.tag || manifest?.version)}>
           {busy ? <LoaderCircle size={15} className="esp-flasher-spinner" /> : <Cable size={15} />}
           {busy ? "Migrating…" : "Migrate partition layout & flash"}
           {!busy && <ArrowUpRight size={14} />}
