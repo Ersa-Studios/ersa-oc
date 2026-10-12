@@ -1,6 +1,7 @@
 // app/projects/page.tsx
 import Image from "next/image";
-import { Navbar } from "@/components/site/navbar";
+import { BrandHeader } from "@/components/site/brand-header";
+import { BrandFooter } from "@/components/site/brand-footer";
 
 type Project = {
   title: string;
@@ -49,10 +50,9 @@ const projects: Project[] = [
 
 export default function ProjectsPage() {
   return (
-    <>
-      <Navbar />
-      <main className="relative isolate min-h-[calc(100vh-56px)]">
-        <section className="relative z-10 mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-12">
+    <main className="site-shell resource-page">
+      <BrandHeader />
+        <section className="resource-content">
           <h1 className="text-4xl md:text-5xl font-sans font-semibold tracking-tight">
             Projects
           </h1>
@@ -71,6 +71,7 @@ export default function ProjectsPage() {
                     src={p.image}
                     alt={p.title}
                     fill
+                    unoptimized
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-contain p-6 opacity-90 group-hover:opacity-100"
                   />
@@ -85,7 +86,7 @@ export default function ProjectsPage() {
             ))}
           </div>
         </section>
-      </main>
-    </>
+      <BrandFooter />
+    </main>
   );
 }

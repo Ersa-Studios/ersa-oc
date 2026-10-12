@@ -3,7 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Navbar } from "@/components/site/navbar";
+import { BrandHeader } from "@/components/site/brand-header";
+import { BrandFooter } from "@/components/site/brand-footer";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -70,10 +71,9 @@ export default async function BlogPostPage({ params }: Params) {
   const html = mdToHtml(raw);
 
   return (
-    <>
-      <Navbar />
-      <main className="relative isolate min-h-[calc(100vh-56px)]">
-        <section className="relative z-10 mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-12">
+    <main className="site-shell resource-page">
+      <BrandHeader />
+        <section className="resource-content">
           <div className="mb-6">
             <Link
               href="/blog"
@@ -95,8 +95,8 @@ export default async function BlogPostPage({ params }: Params) {
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </section>
-      </main>
-    </>
+      <BrandFooter />
+    </main>
   );
 }
 

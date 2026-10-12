@@ -1,0 +1,91 @@
+.site {
+  --ink: #f5f5f0;
+  --quiet: #a2a39e;
+  --lime: #d5ee91;
+  height: 100svh;
+  color: var(--ink);
+  background: #0a0a0a;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-gutter: auto;
+}
+.panel { min-height: 100svh; scroll-snap-align: start; scroll-snap-stop: always; }
+.heroPanel { padding: var(--page-gutter); }
+.heroSurface {
+  min-height: calc(100svh - clamp(32px,5.4vw,96px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 76% 58%,#191a17 0%,#151515 52%);
+}
+.heroBody { position: relative; flex: 1; display: flex; align-items: flex-end; padding: 55px var(--frame-inset) clamp(48px,6vw,96px); isolation: isolate; }
+.heroCopy { position: relative; z-index: 2; width: 54%; }
+.heroCopy h1 { font-size: clamp(52px,7.1vw,118px); font-weight: 700; line-height: .96; letter-spacing: -.065em; margin: 0; }
+.heroCopy h1 span { display: block; white-space: nowrap; }
+.heroCopy > p { max-width: min(510px,80%); margin-top: 32px; color: var(--quiet); font-size: clamp(17px,1.65vw,28px); line-height: 1.4; letter-spacing: -.035em; }
+.scrollCue { display: grid; place-items: center; width: 62px; height: 62px; margin-top: 38px; border: 1px solid #b8bab2; border-radius: 50%; color: var(--ink); transition: border-color .2s,color .2s; }
+.scrollCue:hover { color: var(--lime); border-color: var(--lime); }
+.scrollCue svg { animation: cue 2.8s ease-in-out infinite; }
+.art { position: absolute; width: 47%; left: 55%; top: 50%; transform: translateY(-50%); color: #f0f1eb; }
+.deviceDrawing { display: block; width: 100%; height: auto; overflow: visible; }
+.draw, .drawPhone { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.6s ease-out forwards; }
+.drawPhone { animation-delay: .18s; }
+.keyboard { opacity: .82; }
+.platformPanel, .collectivePanel { width: 100%; margin-inline: auto; padding: var(--section-space) var(--content-gutter); display: flex; flex-direction: column; justify-content: center; }
+.sectionHeader { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 42px; }
+.label { font-size: 10px; letter-spacing: .16em; font-weight: 500; color: #93968a; }
+.sectionHeader h2 { font-size: var(--heading-size); line-height: 1.04; font-weight: 650; letter-spacing: -.06em; margin-top: 16px; }
+.sectionHeader > p { max-width: 300px; font-size: 15px; line-height: 1.6; color: var(--quiet); }
+.platformGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.platformReveal { min-width: 0; }
+.platformCard { position: relative; overflow: hidden; isolation: isolate; height: 100%; min-height: 350px; padding: 32px; display: flex; flex-direction: column; border: 1px solid #2c2d29; border-radius: 22px; background: #191a18; transition: background .25s,border-color .25s; }
+.platformCard > span:not(.cardMedia) { position: relative; z-index: 1; }
+.cardMedia { position: absolute; inset: 0; z-index: -1; }
+.cardMedia img { object-fit: cover; object-position: 65% 55%; }
+.cardMedia::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(14,15,14,.97),rgba(14,15,14,.78) 50%,rgba(14,15,14,.38)),linear-gradient(0deg,rgba(14,15,14,.75),transparent 65%); }
+.platformCard:hover { background: #20211e; border-color: #4b4e43; }
+.cardTop { display: flex; justify-content: space-between; align-items: center; color: #81857a; font-size: 11px; }
+.comingSoon { font-size: 9px; letter-spacing: .08em; padding: 6px 9px; border: 1px solid #705b32; color: #e8a84a; border-radius: 5px; }
+.platformName { font-size: clamp(32px,4vw,57px); letter-spacing: -.06em; line-height: 1; font-weight: 300; margin-top: 58px; }
+.platformName b { font-weight: 750; color: var(--ink); }
+.platformName span { color: var(--platform-accent); }
+.platformDescription { max-width: 390px; color: #a9aba3; font-size: 15px; line-height: 1.6; margin-top: 20px; }
+.platformAction { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 40px; font-size: 13px; color: var(--platform-accent); }
+.collectivePanel { position: relative; overflow: hidden; isolation: isolate; max-width: none; padding-bottom: 0; }
+.collectiveImage { position: absolute; inset: 0; z-index: -1; }
+.collectiveImage img { object-fit: cover; object-position: 60% bottom; }
+.collectiveImage::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(8,10,10,.92),rgba(8,10,10,.68) 40%,rgba(8,10,10,.12) 80%),linear-gradient(0deg,#0a0a0a,transparent 35%); }
+.collectiveBody { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-block: 60px; }
+.collectiveGrid { display: grid; grid-template-columns: 1fr; max-width: 780px; gap: 30px; align-items: end; margin-top: 24px; }
+.collectiveGrid h2 { font-size: var(--heading-size); line-height: 1.06; letter-spacing: -.06em; font-weight: 650; }
+.collectiveGrid p { max-width: 440px; font-size: 16px; line-height: 1.7; color: #c2c6c0; }
+.collectiveLink { display: inline-flex; align-items: center; gap: 13px; margin-top: 28px; color: var(--lime); font-size: 14px; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes cue { 0%,100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+@media (max-width: 760px) {
+  .heroPanel { padding: 12px; }
+  .heroSurface { min-height: calc(100svh - 24px); border-radius: 20px; }
+  .heroBody { flex-direction: column; align-items: stretch; padding: 40px 24px 24px; }
+  .heroCopy { width: 100%; }
+  .heroCopy h1 { font-size: clamp(44px,9.4vw,70px); }
+  .heroCopy > p { max-width: 340px; margin-top: 22px; font-size: 17px; }
+  .scrollCue { width: 44px; height: 44px; margin-top: 24px; }
+  .art { position: relative; left: 18%; top: auto; width: 90%; transform: none; margin-top: -25px; margin-bottom: -35px; }
+  .platformPanel, .collectivePanel { padding: var(--section-space) var(--content-gutter); }
+  .sectionHeader { display: block; margin-bottom: 28px; }
+  .sectionHeader > p { margin-top: 18px; }
+  .platformGrid { grid-template-columns: 1fr; gap: 14px; }
+  .platformCard { min-height: 245px; padding: 24px; }
+  .platformName { margin-top: 32px; font-size: 38px; }
+  .platformDescription { font-size: 14px; margin-top: 15px; }
+  .platformAction { padding-top: 24px; }
+  .collectivePanel { padding-bottom: 0; }
+  .collectiveGrid { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .draw, .drawPhone { animation: none; stroke-dashoffset: 0; }
+  .scrollCue svg { animation: none; }
+}

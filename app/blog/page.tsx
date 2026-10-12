@@ -2,7 +2,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
-import { Navbar } from "@/components/site/navbar";
+import { BrandHeader } from "@/components/site/brand-header";
+import { BrandFooter } from "@/components/site/brand-footer";
 
 type BlogMeta = {
   slug: string;
@@ -44,10 +45,9 @@ function readBlogs(): BlogMeta[] {
 export default function BlogIndexPage() {
   const posts = readBlogs();
   return (
-    <>
-      <Navbar />
-      <main className="relative isolate min-h-[calc(100vh-56px)]">
-        <section className="relative z-10 mx-auto max-w-6xl px-6 md:px-10 lg:px-14 py-12">
+    <main className="site-shell resource-page">
+      <BrandHeader />
+        <section className="resource-content">
           <h1 className="text-4xl md:text-5xl font-sans font-semibold tracking-tight">
             Blog
           </h1>
@@ -74,8 +74,8 @@ export default function BlogIndexPage() {
             ))}
           </div>
         </section>
-      </main>
-    </>
+      <BrandFooter />
+    </main>
   );
 }
 

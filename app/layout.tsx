@@ -4,6 +4,7 @@ import * as React from "react";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./site.css";
 
 export const metadata: Metadata = {
   title: "ersa.opensource — Truly own your hardware",

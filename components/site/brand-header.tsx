@@ -9,6 +9,7 @@ export function BrandHeader() {
       <nav className="header-nav" aria-label="Main navigation">
         <Link href="/#platforms">Platforms</Link>
         <Link href="/about">About</Link>
+        <Link href="/about#community" className="header-cta">Get involved <span aria-hidden="true">↗</span></Link>
       </nav>
     </header>
   );

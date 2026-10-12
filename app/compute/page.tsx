@@ -1,8 +1,10 @@
+import { ScrollText } from "@/components/site/scroll-text";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
 import { BrandHeader } from "@/components/site/brand-header";
 import { PlatformExplore } from "@/components/site/platform-explore";
 import { BrandFooter } from "@/components/site/brand-footer";
+import { ScrollReveal } from "@/components/site/scroll-reveal";
 
 export const metadata = {
   title: "ersa.compute — Open Linux for PC, automotive, embedded",
@@ -30,27 +32,34 @@ const platformPrinciples = [
 export default function ComputePage() {
   return (
     <main className="site-shell product-page compute-page">
-      <BrandHeader />
-      <section className="product-hero" aria-labelledby="compute-title">
+      <div className="interior-frame compute-photo-frame">
+        <BrandHeader />
+        <section className="product-hero compute-hero" aria-labelledby="compute-title">
         <Link href="/#platforms" className="back-link"><ArrowLeft size={14} /> All platforms</Link>
         <p className="eyebrow product-kicker compute-kicker"><span className="compute-status-dot" /> ERSA.COMPUTE · OPEN LINUX PLATFORM</p>
-        <div className="product-title-row"><h1 id="compute-title"><span>ersa.</span><em>compute</em></h1><span className="coming-soon-badge">COMING SOON</span></div>
-        <p className="product-lede">An open compute foundation for PCs, mobile devices, automotive systems, and embedded hardware. The architecture is still taking shape, with a focus on systems that can adapt to their hardware and the people using them.</p>
-        <Link href="#architecture" className="product-primary-link compute-primary-link">Explore the architecture <ArrowUpRight size={15} /></Link>
-      </section>
+        <div className="compute-hero-layout">
+          <div>
+            <div className="product-title-row"><h1 id="compute-title"><span>ersa.</span><em>compute</em></h1><span className="coming-soon-badge">IN PROGRESS</span></div>
+            <p className="product-lede">An open Linux foundation for PCs, automotive systems, and embedded devices. Built around repeatable builds, straightforward deployment, and manageable systems.</p>
+            <Link href="#direction" className="compute-hero-cta">What we&apos;re working toward <ArrowRight size={14} /></Link>
+            <Link className="page-scroll-link compute-scroll-link" href="#direction" aria-label="Scroll to the compute platform direction"><ArrowDown size={16} strokeWidth={1.6} /></Link>
+          </div>
+        </div>
+        </section>
+      </div>
 
-      <section className="compute-usecases" aria-labelledby="compute-usecases-title">
+      <section className="compute-usecases" id="direction" aria-labelledby="compute-usecases-title">
         <div className="product-section-heading">
-          <div><p className="eyebrow">ONE OPEN FOUNDATION</p><h2 id="compute-usecases-title">A simpler way to build and deploy.</h2></div>
+          <div><p className="eyebrow">ONE OPEN FOUNDATION</p><ScrollText id="compute-usecases-title">{"A simpler way to build and deploy."}</ScrollText></div>
           <p>Ersa Compute is a work in progress, with a focus on repeatable builds, simpler deployment, and practical device management.</p>
         </div>
         <div className="compute-principles">
           {platformPrinciples.map((item) => (
-            <article className="compute-principle" key={item.number}>
+            <ScrollReveal className="compute-card-reveal" key={item.number} delay={Number(item.number) * 90}><article className="compute-principle">
               <span className="compute-principle-number">{item.number}</span>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-            </article>
+            </article></ScrollReveal>
           ))}
         </div>
         <div className="compute-targets">
@@ -61,16 +70,11 @@ export default function ComputePage() {
         </div>
       </section>
 
-      <section className="compute-foundation" id="architecture" aria-labelledby="architecture-title">
-        <div><p className="eyebrow">INTENDED OS ARCHITECTURE · IN PROGRESS</p><h2 id="architecture-title">One system.<br />A consistent HAL.</h2></div>
+      <section className="compute-foundation compute-direction" aria-labelledby="direction-title">
+        <div><p className="eyebrow">A PRACTICAL STARTING POINT</p><ScrollText id="direction-title">{"One system.\nAdapted to its device."}</ScrollText></div>
         <div className="foundation-copy">
-          <p>A consistent hardware abstraction layer (HAL) is the proposed boundary between Ersa&apos;s system services and device specific hardware. It gives the OS a common way to work across different boards and form factors, while keeping hardware details in the right place.</p>
-          <div className="architecture-stack" aria-label="Proposed Ersa Compute architecture">
-            <div><b>Applications &amp; shell</b><span>PC · mobile · automotive · embedded</span></div>
-            <div><b>Shared platform services</b><span>Common system capabilities</span></div>
-            <div className="architecture-hal"><b>Hardware abstraction layer <small>HAL</small></b><span>Consistent interfaces across devices</span></div>
-            <div><b>Device specific drivers</b><span>Hardware and board support</span></div>
-          </div>
+          <p>Ersa Compute is still in development. The goal is a Linux base that can be built and maintained consistently, then adapted for the hardware and job at hand.</p>
+          <p>From a desktop PC to a vehicle or embedded board, the same principles should make each build easier to reproduce, deploy, and manage.</p>
         </div>
       </section>
 

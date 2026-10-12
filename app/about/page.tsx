@@ -1,7 +1,9 @@
-import { ArrowUpRight, Mail, MessageCircle, Send } from "lucide-react";
+import { ScrollText } from "@/components/site/scroll-text";
+import { ArrowDown, ArrowUpRight, Mail, MessageCircle, Send } from "lucide-react";
 import { BrandHeader } from "@/components/site/brand-header";
 import { PlatformExplore } from "@/components/site/platform-explore";
 import { BrandFooter } from "@/components/site/brand-footer";
+import { ScrollReveal } from "@/components/site/scroll-reveal";
 
 const partners = [
   {
@@ -30,54 +32,62 @@ const partners = [
 const principles = [
   {
     number: "01",
-    title: "Make it understandable",
-    description: "Share designs, source, and the decisions behind them so other people can learn from the work.",
+    title: "Public by default",
+    description: "Code, designs, and project notes are shared as the work develops.",
   },
   {
     number: "02",
-    title: "Build for ownership",
-    description: "Create technology people can inspect, repair, adapt, and keep using on their own terms.",
+    title: "Repair over replace",
+    description: "Make devices and software people can inspect, fix, and adapt.",
   },
   {
     number: "03",
-    title: "Learn together",
-    description: "Bring makers, engineers, and curious beginners into the same conversation and build practice.",
+    title: "Build together",
+    description: "Work alongside independent makers, engineers, and hardware partners.",
   },
 ];
 
 export default function AboutPage() {
   return (
     <main className="site-shell about-page">
-      <BrandHeader />
-
-      <section className="about-hero" aria-labelledby="about-title">
-        <p className="eyebrow"><span className="status-dot" /> ABOUT ERSA · NEW DELHI, INDIA</p>
-        <h1 id="about-title">Open hardware.<br />Shared <span>possibility.</span></h1>
+      <div className="interior-frame">
+        <BrandHeader />
+        <section className="about-hero" aria-labelledby="about-title">
+        <div className="about-hero-layout">
+          <div>
+        <p className="eyebrow"><span className="status-dot" /> AN OPEN HARDWARE COLLECTIVE · INDIA</p>
+        <h1 id="about-title">Technology should<br /><span>be yours to change.</span></h1>
+          </div>
+          <div className="about-hero-copy-aside">
         <div className="about-hero-bottom">
-          <p>Ersa is an open hardware and software collective building tools people can understand, repair, and make their own. We share the work as we go, so others can learn from it and take it further.</p>
+          <p>Ersa is a community building open hardware and software. We publish the work, learn with others, and make room for people to take it further.</p>
           <div className="community-links" id="community" aria-label="Join the Ersa community">
             <a href="https://t.me/ersaopencollective" target="_blank" rel="noopener noreferrer" className="community-link telegram-link"><Send size={15} /> Telegram <ArrowUpRight size={13} /></a>
             <a href="https://discord.gg/UgfguRX4mk" target="_blank" rel="noopener noreferrer" className="community-link discord-link"><MessageCircle size={15} /> Discord <ArrowUpRight size={13} /></a>
             <a href="mailto:gagan@ersa.dev" className="community-link email-link"><Mail size={15} /> Email us <ArrowUpRight size={13} /></a>
           </div>
         </div>
+          </div>
+        </div>
+        <a className="page-scroll-link about-scroll-link" href="#approach" aria-label="Scroll to how Ersa works"><ArrowDown size={16} strokeWidth={1.6} /></a>
       </section>
+      </div>
 
-      <section className="about-principles" aria-labelledby="approach-title">
+      <section className="about-principles" id="approach" aria-labelledby="approach-title">
         <div className="about-section-heading">
           <div>
             <p className="eyebrow">HOW WE WORK</p>
-            <h2 id="approach-title">Built in the open,<br />made to be shared.</h2>
+            <ScrollText id="approach-title">{"Built in the open,\nmade to be shared."}</ScrollText>
           </div>
-          <p>We want more people to have the knowledge and freedom to shape the technology around them.</p>
+          <p>Open source, repairability, and shared work guide what we choose to build.</p>
         </div>
         <div className="principle-grid">
           {principles.map((principle) => (
-            <article className="principle-card" key={principle.number}>
+            <ScrollReveal className="about-card-reveal" key={principle.number} delay={Number(principle.number) * 90}><article className="principle-card">
               <span>{principle.number}</span>
               <h3>{principle.title}</h3>
               <p>{principle.description}</p>
-            </article>
+            </article></ScrollReveal>
           ))}
         </div>
       </section>
@@ -86,13 +96,13 @@ export default function AboutPage() {
         <div className="partners-heading">
           <div>
             <p className="eyebrow">PEOPLE WE BUILD WITH</p>
-            <h2 id="partners-title">Our partners.</h2>
+            <ScrollText id="partners-title">{"Our partners."}</ScrollText>
           </div>
-          <p>Good work grows through shared skills, open conversations, and generous collaborators.</p>
+          <p>Independent groups we work with across hardware, software, and making.</p>
         </div>
         <div className="partner-grid">
           {partners.map((partner, index) => (
-            <article className="partner-card" key={partner.name}>
+            <ScrollReveal className="about-card-reveal" key={partner.name} delay={index * 90}><article className="partner-card">
               <div className="partner-card-top"><span>0{index + 1}</span><span>{partner.location}</span></div>
               <h3>{partner.name}</h3>
               <p>{partner.description}</p>
@@ -101,7 +111,7 @@ export default function AboutPage() {
                   <a href={link.href} target="_blank" rel="noopener noreferrer" key={link.label}>{link.label} <ArrowUpRight size={13} /></a>
                 ))}
               </div>
-            </article>
+            </article></ScrollReveal>
           ))}
         </div>
         <p className="partner-note">Have a project or practice that aligns with ours? <a href="mailto:gagan@ersa.dev">Let&apos;s talk <ArrowUpRight size={13} /></a></p>
