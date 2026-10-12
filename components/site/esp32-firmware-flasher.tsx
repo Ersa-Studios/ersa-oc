@@ -270,7 +270,7 @@ export function Esp32FirmwareFlasher() {
     <div className="esp-flasher">
       <div className="esp-flasher-controls">
         <label className="esp-flasher-target">
-          <span>BOARD TARGET</span>
+          <span>YOUR BOARD</span>
           <select value={platform} onChange={(event) => {
             setPlatform(event.target.value as Platform);
             setComplete(false);
@@ -294,7 +294,7 @@ export function Esp32FirmwareFlasher() {
         </button>
         <button type="button" className="esp-flasher-button" onClick={() => connectAndFlash(true)} disabled={!canFlash || !migrationManifest || migrationManifest.tag !== (manifest?.tag || manifest?.version)}>
           {busy ? <LoaderCircle size={15} className="esp-flasher-spinner" /> : <Cable size={15} />}
-          {busy ? "Migrating…" : "Migrate partition layout & flash"}
+          {busy ? "Preparing older watch…" : "Set up an older watch"}
           {!busy && <ArrowUpRight size={14} />}
         </button>
       </div>
@@ -304,7 +304,7 @@ export function Esp32FirmwareFlasher() {
       {status && <p className="esp-flasher-message" role="status">{status}</p>}
       {failure && <p className="esp-flasher-message is-error" role="alert">{failure}</p>}
       {busy && <div className="esp-flasher-progress" aria-label={`Flash progress ${progress}%`}><span style={{ width: `${progress}%` }} /></div>}
-      <p className="esp-flasher-footnote"><ArrowDownToLine size={13} /> Firmware and migration files are checksum-verified before writing. Migration preserves NVS settings and replaces the old unused SPIFFS area with the second OTA slot.</p>
+      <p className="esp-flasher-footnote"><ArrowDownToLine size={13} /> Downloads are verified before installation. Updating an older build? Use “Set up an older watch” to prepare it for the latest firmware.</p>
     </div>
   );
 }

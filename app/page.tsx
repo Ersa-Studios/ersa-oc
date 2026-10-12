@@ -11,8 +11,8 @@ import styles from "./home.module.css";
 
 const platforms = [
   {
-    number: "01", name: "wearable", accent: "#A8D66D", href: "/wearable", comingSoon: false, image: null,
-    description: "Open tools for personal, repairable wearable technology.",
+    number: "01", name: "wearable", accent: "#A8D66D", href: "/wearable", comingSoon: false, image: "/platforms/wearable/watch-everyday.webp",
+    description: "An open e-paper watch platform with first-class ANCS/AMS support for iPhone.",
   },
   {
     number: "02", name: "compute", accent: "#E8A84A", href: "/compute", comingSoon: true, image: "/platforms/compute-laptop.jpg",
@@ -37,6 +37,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className={`${styles.panel} ${styles.platformPanel}`} id="platforms" aria-labelledby="platforms-title">
+        <div className={styles.contentSurface}>
         <div className={styles.sectionHeader}>
           <div><p className={styles.label}>OPEN PLATFORMS</p><ScrollText id="platforms-title">Built to be yours.</ScrollText></div>
           <p>Software and hardware for people who want to understand what they use.</p>
@@ -54,8 +55,10 @@ export default function HomePage() {
             </ScrollReveal>
           ))}
         </div>
+        </div>
       </section>
       <section className={`${styles.panel} ${styles.collectivePanel}`} aria-labelledby="collective-title">
+        <div className={`${styles.contentSurface} ${styles.collectiveSurface}`}>
         <div className={styles.collectiveImage} aria-hidden="true"><Image src="/platforms/collective-earth.jpg" alt="" fill unoptimized sizes="100vw" /></div>
         <div className={styles.collectiveBody}>
           <p className={styles.label}>MADE IN THE OPEN</p>
@@ -66,6 +69,7 @@ export default function HomePage() {
               <Link href="/about" className={styles.collectiveLink}>Meet the collective <ArrowRight size={18} strokeWidth={1.5} /></Link>
             </ScrollReveal>
           </div>
+        </div>
         </div>
       </section>
       <BrandFooter />

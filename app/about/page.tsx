@@ -1,10 +1,9 @@
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { EditorialPage, EditorialHero, EditorialSection, EditorialImage, editorialStyles as s } from "@/components/site/editorial-page";
 import { ScrollText } from "@/components/site/scroll-text";
-import { ArrowDown, ArrowUpRight, Mail, MessageCircle, Send } from "lucide-react";
-import { BrandHeader } from "@/components/site/brand-header";
-import { PlatformExplore } from "@/components/site/platform-explore";
-import { BrandFooter } from "@/components/site/brand-footer";
-import { ScrollReveal } from "@/components/site/scroll-reveal";
 
+export const metadata={title:"About — ersa.opensource",description:"An open hardware and software collective based in India. Build, learn, and share with Ersa."};
 const partners = [
   {
     name: "Absurd Industries",
@@ -47,79 +46,18 @@ const principles = [
   },
 ];
 
-export default function AboutPage() {
-  return (
-    <main className="site-shell about-page">
-      <div className="interior-frame">
-        <BrandHeader />
-        <section className="about-hero" aria-labelledby="about-title">
-        <div className="about-hero-layout">
-          <div>
-        <p className="eyebrow"><span className="status-dot" /> AN OPEN HARDWARE COLLECTIVE · INDIA</p>
-        <h1 id="about-title">Technology should<br /><span>be yours to change.</span></h1>
-          </div>
-          <div className="about-hero-copy-aside">
-        <div className="about-hero-bottom">
-          <p>Ersa is a community building open hardware and software. We publish the work, learn with others, and make room for people to take it further.</p>
-          <div className="community-links" id="community" aria-label="Join the Ersa community">
-            <a href="https://t.me/ersaopencollective" target="_blank" rel="noopener noreferrer" className="community-link telegram-link"><Send size={15} /> Telegram <ArrowUpRight size={13} /></a>
-            <a href="https://discord.gg/UgfguRX4mk" target="_blank" rel="noopener noreferrer" className="community-link discord-link"><MessageCircle size={15} /> Discord <ArrowUpRight size={13} /></a>
-            <a href="mailto:gagan@ersa.dev" className="community-link email-link"><Mail size={15} /> Email us <ArrowUpRight size={13} /></a>
-          </div>
-        </div>
-          </div>
-        </div>
-        <a className="page-scroll-link about-scroll-link" href="#approach" aria-label="Scroll to how Ersa works"><ArrowDown size={16} strokeWidth={1.6} /></a>
-      </section>
-      </div>
-
-      <section className="about-principles" id="approach" aria-labelledby="approach-title">
-        <div className="about-section-heading">
-          <div>
-            <p className="eyebrow">HOW WE WORK</p>
-            <ScrollText id="approach-title">{"Built in the open,\nmade to be shared."}</ScrollText>
-          </div>
-          <p>Open source, repairability, and shared work guide what we choose to build.</p>
-        </div>
-        <div className="principle-grid">
-          {principles.map((principle) => (
-            <ScrollReveal className="about-card-reveal" key={principle.number} delay={Number(principle.number) * 90}><article className="principle-card">
-              <span>{principle.number}</span>
-              <h3>{principle.title}</h3>
-              <p>{principle.description}</p>
-            </article></ScrollReveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="partners-section" aria-labelledby="partners-title">
-        <div className="partners-heading">
-          <div>
-            <p className="eyebrow">PEOPLE WE BUILD WITH</p>
-            <ScrollText id="partners-title">{"Our partners."}</ScrollText>
-          </div>
-          <p>Independent groups we work with across hardware, software, and making.</p>
-        </div>
-        <div className="partner-grid">
-          {partners.map((partner, index) => (
-            <ScrollReveal className="about-card-reveal" key={partner.name} delay={index * 90}><article className="partner-card">
-              <div className="partner-card-top"><span>0{index + 1}</span><span>{partner.location}</span></div>
-              <h3>{partner.name}</h3>
-              <p>{partner.description}</p>
-              <div className="partner-links">
-                {partner.links.map((link) => (
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" key={link.label}>{link.label} <ArrowUpRight size={13} /></a>
-                ))}
-              </div>
-            </article></ScrollReveal>
-          ))}
-        </div>
-        <p className="partner-note">Have a project or practice that aligns with ours? <a href="mailto:gagan@ersa.dev">Let&apos;s talk <ArrowUpRight size={13} /></a></p>
-      </section>
-
-      <PlatformExplore />
-
-      <BrandFooter />
-    </main>
-  );
-}
+export default function AboutPage(){return <EditorialPage>
+ <EditorialHero map media={<div className={s.map}><Image src="/platforms/india-dot-map.svg?v=20261013-complete" alt="Dotted map of India including Jammu and Kashmir, Ladakh, Aksai Chin, Lakshadweep, and the Andaman and Nicobar Islands" width={560} height={570} unoptimized priority /></div>}>
+  <p className={s.label}>ERSA · AN OPEN HARDWARE COLLECTIVE</p>
+  <h1>Built in India.<br/>Shared everywhere.</h1>
+  <p className={s.lede}>We’re a community building open hardware and software. We publish the work, learn together, and leave room for others to take it further.</p>
+  <div className={s.actions} id="community" aria-label="Join the Ersa community"><a href="https://t.me/ersaopencollective" target="_blank" rel="noopener noreferrer" className={`${s.button} ${s.primary}`}>Telegram <ArrowUpRight size={16}/></a><a href="https://discord.gg/UgfguRX4mk" target="_blank" rel="noopener noreferrer" className={s.button}>Discord <ArrowUpRight size={16}/></a></div>
+ </EditorialHero>
+ <section className={s.section} id="approach" aria-labelledby="approach-title"><div className={s.featurePanel}>
+  <EditorialImage src="/platforms/compute-circuitry.jpg" alt="The components and traces of a circuit board" className={s.editorialPhoto} position="50% center"/>
+  <div className={s.featureCopy}><p className={s.label}>HOW WE WORK</p><ScrollText id="approach-title">{"Open by default.\nMade to be shared."}</ScrollText><div className={s.rows}>{principles.map(principle=><article className={s.row} key={principle.number}><h3>{principle.title}</h3><p>{principle.description}</p></article>)}</div></div>
+ </div></section>
+ <EditorialSection id="partners" label="PEOPLE WE BUILD WITH" title="Independent people. Shared work." description="Hardware, software, and making—with independent groups who care about keeping the work open.">
+  <div className={s.cards}>{partners.map((partner,index)=><article className={s.card} key={partner.name}><div className={s.cardTop}><span>0{index+1}</span><span>{partner.location}</span></div><h3>{partner.name}</h3><p>{partner.description}</p><div className={s.links}>{partner.links.map(link=><a href={link.href} key={link.label} target="_blank" rel="noopener noreferrer">{link.label}<ArrowUpRight size={14}/></a>)}</div></article>)}</div>
+ </EditorialSection>
+ </EditorialPage>}

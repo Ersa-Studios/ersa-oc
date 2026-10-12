@@ -1,5 +1,6 @@
 /* Shared layout contract: all routes use the same frame, gutter and type scale. */
 :root {
+  --panel-background: radial-gradient(ellipse at 76% 58%, #191a17 0%, #151515 52%);
   --page-gutter: clamp(16px, 2.7vw, 48px);
   --frame-inset: clamp(28px, 3.6vw, 64px);
   --content-gutter: calc(var(--page-gutter) + var(--frame-inset));
